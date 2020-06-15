@@ -37,9 +37,10 @@ low_prices = []
 
 for date in dates:
     high_price = tsd[date]["2. high"]
-    high_prices.append(float(high_price))
     low_price = tsd[date]["3. low"]
+    high_prices.append(float(high_price))
     low_prices.append(float(low_price))
+
 
 
 recent_high = max(high_prices)
@@ -55,14 +56,30 @@ recent_low = min(low_prices)
 
 csv_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "prices.csv")
 
-csv_headers = 
+csv_headers = ["timestamp", "open", "high", "low", "close", "volume"]
+
 with open(csv_file_path, "w") as csv_file:
-    writer = csv.DictWriter(csv_file, fieldnames=["city", "name"])
+    writer = csv.DictWriter(csv_file, fieldnames=csv_headers)
     writer.writeheader()
 
     # looping
 
-    writer.writerow({"city": "New York", "name": "Yankees"})
+    writer.writerow({
+        "timestamp": "TODO",
+        "open": "TODO",
+        "high": "TODO",
+        "low": "TODO",
+        "close": "TODO",
+        "volume": "TODO"
+    })
+    writer.writerow({
+        "timestamp": "TODO",
+        "open": "TODO",
+        "high": "TODO",
+        "low": "TODO",
+        "close": "TODO",
+        "volume": "TODO"
+    })
 
 
 
