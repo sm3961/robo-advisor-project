@@ -3,10 +3,15 @@
 import csv
 import json
 import os
+
+
+from dotenv import load_dotenv
 import requests
 
-# utility function to convert float or integer to usd-formatted string (for printing)
+load_dotenv()
 
+
+# utility function to convert float or integer to usd-formatted string (for printing)
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
 
@@ -14,7 +19,12 @@ def to_usd(my_price):
 
 #INFO INPUTS
 
-request_url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&apikey=demo"
+api_key = os.environ.get("ALPHAVANTAGE_API_KEY")
+#[print](api_key)
+
+symbol = "IBM"  #accept user input
+
+request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&apikey={api_key}"
 
 response = requests.get(request_url)
 
@@ -27,7 +37,6 @@ tsd = parsed_response["Time Series (Daily)"]
 dates = list(tsd.keys())
 
 latest_day = dates[0]
-
 latest_close = tsd[latest_day]["4. close"]
 
 

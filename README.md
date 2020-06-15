@@ -33,6 +33,14 @@ From within the virtual environment, install the required packages specified in 
 pip install -r requirements.txt
 ```
 
+## Setup
+
+Before using or developing this application, take a moment to [obtain an Alphavantage API Key] (https://www.alphavantage.co/support/#api-key) (e.g. "abc123").
+
+After obtaining an API key, create a new file in this repository called ".env", and update the contents of the ".env" file to specify your real API key. 
+
+ALPHAVANTAGE_API_KEY="abc123"
+
 
 
 ## Usage
