@@ -3,6 +3,11 @@
 import requests
 import json
 
+# utility function to convert float or integer to usd-formatted string (for printing)
+
+def to_usd(my_price):
+    return "${0:,.2f}".format(my_price)
+
 
 
 #INFO INPUTS
@@ -10,7 +15,6 @@ import json
 request_url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&apikey=demo"
 
 response = requests.get(request_url)
-
 
 parsed_response = json.loads(response.text)
 
@@ -37,7 +41,7 @@ print("REQUESTING STOCK MARKET DATA...")
 print("REQUEST AT: 2018-02-20 02:00pm")
 print("-------------------------")
 print(f"LATEST DAY: {last_refreshed}")
-print(f"LATEST CLOSE: {latest_close}")
+print(f"LATEST CLOSE: {to_usd(float(latest_close))}")
 print("RECENT HIGH: $101,000.00")
 print("RECENT LOW: $99,000.00")
 print("-------------------------")
