@@ -1,7 +1,9 @@
 # app/robo_advisor.py
 
-import requests
+import csv
 import json
+import os
+import requests
 
 # utility function to convert float or integer to usd-formatted string (for printing)
 
@@ -49,6 +51,23 @@ recent_low = min(low_prices)
 #
 
 
+#csv_file_path = "data/prices.csv"
+
+csv_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "prices.csv")
+
+csv_headers = 
+with open(csv_file_path, "w") as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=["city", "name"])
+    writer.writeheader()
+
+    # looping
+
+    writer.writerow({"city": "New York", "name": "Yankees"})
+
+
+
+
+
 print("-------------------------")
 print("SELECTED SYMBOL: IBM")
 print("-------------------------")
@@ -57,11 +76,15 @@ print("REQUEST AT: 2018-02-20 02:00pm")
 print("-------------------------")
 print(f"LATEST DAY: {last_refreshed}")
 print(f"LATEST CLOSE: {to_usd(float(latest_close))}")
-print("RECENT HIGH: {to_usd(float(recent_high))}")
-print("RECENT LOW: {to_usd(float(recent_low))}")
+print(f"RECENT HIGH: {to_usd(float(recent_high))}")
+print(f"RECENT LOW: {to_usd(float(recent_low))}")
 print("-------------------------")
 print("RECOMMENDATION: BUY!")
-print("RECOMMENDATION REASON: TODO")
+print("BECAUSE: TODO")
+print("-------------------------")
+print(f"WRITING DATA TO CSV: {csv_file_path}...")
 print("-------------------------")
 print("HAPPY INVESTING!")
 print("-------------------------")
+
+
