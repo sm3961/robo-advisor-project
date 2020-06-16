@@ -40,6 +40,8 @@ latest_day = dates[0]
 latest_close = tsd[latest_day]["4. close"]
 
 
+
+
 high_prices = []
 low_prices = []
 
@@ -54,6 +56,11 @@ for date in dates:
 
 recent_high = max(high_prices)
 recent_low = min(low_prices)
+
+
+cutoff_one = (float(recent_low)) * 0.20         #20 percent of the recent low value
+cutoff_two = cutoff_one + (float(recent_low))   #recent low value plus 20 percent of the recent low value
+
 
 
 #
@@ -97,12 +104,14 @@ print(f"LATEST CLOSE: {to_usd(float(latest_close))}")
 print(f"RECENT HIGH: {to_usd(float(recent_high))}")
 print(f"RECENT LOW: {to_usd(float(recent_low))}")
 print("-------------------------")
-print("RECOMMENDATION: BUY!")
+if float(latest_close) < cutoff_two:
+    print("DON'T BUY!")
+else:
+    print("BUY!")
+print("RECOMMENDATION: ")
 print("BECAUSE: TODO")
 print("-------------------------")
 print(f"WRITING DATA TO CSV: {csv_file_path}...")
 print("-------------------------")
 print("HAPPY INVESTING!")
 print("-------------------------")
-
-
