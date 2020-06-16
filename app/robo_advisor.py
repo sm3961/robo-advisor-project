@@ -105,11 +105,15 @@ print(f"RECENT HIGH: {to_usd(float(recent_high))}")
 print(f"RECENT LOW: {to_usd(float(recent_low))}")
 print("-------------------------")
 if float(latest_close) < cutoff_two:
-    print("DON'T BUY!")
+    print("RECOMMENDATION: BUY!")
 else:
-    print("BUY!")
-print("RECOMMENDATION: ")
-print("BECAUSE: TODO")
+    print("RECOMMENDATION: DON'T BUY!")
+
+if float(latest_close) < cutoff_two:
+    print("BECAUSE THE STOCK'S LATEST CLOSING PRICE IS LESS THAN 20% ABOVE IT'S RECENT LOW.")
+else:
+    print("BECAUSE THE STOCK'S LATEST CLOSING PRICE IS GREATER THAN 20% ABOVE IT'S RECENT LOW.")
+
 print("-------------------------")
 print(f"WRITING DATA TO CSV: {csv_file_path}...")
 print("-------------------------")
